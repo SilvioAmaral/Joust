@@ -1,0 +1,90 @@
+Next Project
+
+Codename: Joust
+An online tournament manager
+
+
+
+->Using: 
+TDD
+MEAN stack: MongoDB, Express , NodeJs, and AngularJs
+Can we include functional programming ideas ? Try to keep objects as immutable as possible, having fewer side effects 
+
+
+Manage tournaments
+CRUD for tournaments (ad hoc tournament, elimination brackets tournament, configure tornament )
+Easy to track competitions and tournaments with win x loses 
+Help report on the results -> scoring
+Manage rounds of tournaments
+Help import team / users 
+Has to be easy to enter results from matches 
+Use previous tournaments as base for next
+
+Publish information of matches to users -> Email , rss feeds ?
+
+Manage users
+Manage semi-anonymous users 
+Manage permission
+
+
+Happy path use cases
+
+RacerX is the user with organizer priviledges for now
+
+
+1) Create a new tournament 
+
+-User logs in 
+-Presses the create tournament button 
+-Fills in basic tournament options
+  -Add name of tournament
+  -Description
+  -Add Type of tournament (ad hoc , round robin... )
+  -Timeline of tournament (how long does it last, how long between matches...)
+  -He is presented with a default list of Leagues based on past tournaments, groups he has made in the past, and his contacts
+  -Selects users
+  -Hit save
+  -System will , based on the tournament type, we will save the tournament and generate the entries for the matches with a status of 'Ready'
+  -User is redirected to the page with the list of games created by the system, with a 'Start Tournament' and 'Delete tournament' buttons
+  -User clicks on  'Start' and the system informs the players (TO BE DEFINED)
+  
+
+2) The Player receives the notification
+
+-Clicks the LInk(url), navigates to page with information such as 
+  -Tournament results so far ( games already played, stats, etc)
+  -Actual Schedule 
+  -Links to log in, goes to user games and results for tournament in question
+  -filter by users/teams
+  
+3) Organizer reports results.
+  Organizer goes to link for tournament.
+  user logs in, if not already logged in.
+  Sees list of matches that are coming up / past.
+  If match is passed, can fill in results of past matches ( win, loss, tie, score, description, notes)
+  user change details of game ( push time to later, etc)
+  - V2 - add MVP / MWP (Most Worthless Player) options
+  - V2 - add ability to swap Players
+  - V2 - add ability to cancel a game. ( possibly switch tournament type to ad hoc. To switch to another type, would need to be validated).
+  
+Other:
+- User admin
+- League management
+- external site integration (facebook, google contacts, twitter, etc)
+
+Step 1:
+
+Has to be done by next week:
+
+  - github page.
+  - set up project
+  - have an index.html
+  - have angular up
+  - have express set up
+  - have node.js set up
+  - have mongodb set up.
+  
+Bonus points:
+
+  - More use cases
+  - Read / practice blog post about MEAN
