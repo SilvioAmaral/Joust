@@ -10,9 +10,11 @@ angular.module('myApp.controllers', []).
       url: '/api/name'
     }).
     success(function (data, status, headers, config) {
+      $scope.title = "Joust - Smash Tournaments In The Face";
       $scope.name = data.name;
     }).
     error(function (data, status, headers, config) {
+      $scope.title = 'Error!';
       $scope.name = 'Error!'
     });
 
