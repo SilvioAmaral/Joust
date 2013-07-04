@@ -17,9 +17,10 @@ angular.module('myApp.controllers', []).
     });
 
   }).
-  controller('MyCtrl1', function ($scope) {
+  controller('TournamentCtrl', function ($scope) {
     // write Ctrl here
-
+    $scope.title = 'The title ';
+    $scope.tournaments = [{'name': 'francisco'}, {'name': 'silvio'}, {'name':'jose'}];
   }).
   controller('MyCtrl2', function ($scope) {
     // write Ctrl here

@@ -1,0 +1,6 @@
+p {{title}}
+
+ul
+    li(ng-repeat="t in tournaments")
+        |[{{$index + 1}}] {{t.name}}
+//improve this syntax or it will defeat the purpose...

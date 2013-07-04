@@ -7,7 +7,8 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
   http = require('http'),
-  path = require('path');
+  path = require('path'),
+  TournamentProvider = require('./business/tournamentprovider').TournamentProvider;
 
 var app = module.exports = express();
 
@@ -36,13 +37,23 @@ if (app.get('env') === 'production') {
   // TODO
 };
 
+//Initialize new tournament provider object
+var tournamentProvider = new TournamentProvider('localhost', 27017);
 
 /**
  * Routes
  */
 
 // serve index and view partials
-app.get('/', routes.index);
+//app.get('/', routes.index);
+app.get('/', function(req, res){
+    tournamentProvider.findAll(function(error, tournament_collection){
+        res.render('index', {
+            title: 'Tournament list',
+            tournaments:tournament_collection
+        });
+    });
+});
 app.get('/partials/:name', routes.partials);
 
 // JSON API
