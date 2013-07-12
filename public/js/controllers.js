@@ -3,26 +3,24 @@
 /* Controllers */
 
 angular.module('joust.controllers', []).
-  controller('AppCtrl', function ($scope, $http) {
+  controller('AppCtrl', function ($scope) {
+        $scope.name = "Joust - Smash Tournaments In The Face";
+    }).
+  controller('TournamentCtrl', function ($scope, $http) {
 
     $http({
-      method: 'GET',
-      url: '/api/name'
+        method: 'GET',
+        url: '/api/tournaments'
     }).
     success(function (data, status, headers, config) {
-      $scope.title = "Joust - Smash Tournaments In The Face";
-      $scope.name = data.name;
+        $scope.title = data.title;
+        $scope.tournaments2 = data.tournaments;
     }).
     error(function (data, status, headers, config) {
-      $scope.title = 'Error!';
-      $scope.name = 'Error!'
+        $scope.title = 'Error!';
+        $scope.tournaments2 = 'Error!'
     });
 
-  }).
-  controller('TournamentCtrl', function ($scope) {
-    // write Ctrl here
-    $scope.title = 'The title ';
-    $scope.tournaments = [{'name': 'francisco'}, {'name': 'silvio'}, {'name':'jose'}];
   }).
   controller('MyCtrl2', function ($scope) {
     // write Ctrl here

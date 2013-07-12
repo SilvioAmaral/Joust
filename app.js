@@ -45,19 +45,12 @@ var tournamentProvider = new TournamentProvider('localhost', 27017);
  */
 
 // serve index and view partials
-//app.get('/', routes.index);
-app.get('/', function(req, res){
-    tournamentProvider.findAll(function(error, tournament_collection){
-        res.render('index', {
-            title: 'Tournament list',
-            tournaments:tournament_collection
-        });
-    });
-});
+app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
 app.get('/api/name', api.name);
+app.get('/api/tournaments', api.tournaments);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

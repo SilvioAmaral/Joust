@@ -5,7 +5,7 @@ var ObjectID = require('mongodb').ObjectID;
 
 //Declares the object
 TournamentProvider = function(host, port) {
-    this.db= new Db('joust', new Server(host, port, {safe: false}, {auto_reconnect: true}, {}));
+    this.db= new Db('joust', new Server(host, port, {safe: false}, {auto_reconnect: true}));
     this.db.open(function(){});
 };
 
