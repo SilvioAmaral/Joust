@@ -7,8 +7,7 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
   http = require('http'),
-  path = require('path'),
-  TournamentProvider = require('./business/tournamentprovider').TournamentProvider;
+  path = require('path');
 
 var app = module.exports = express();
 
@@ -35,10 +34,7 @@ if (app.get('env') === 'development') {
 // production only
 if (app.get('env') === 'production') {
   // TODO
-};
-
-//Initialize new tournament provider object
-var tournamentProvider = new TournamentProvider('localhost', 27017);
+}
 
 /**
  * Routes
