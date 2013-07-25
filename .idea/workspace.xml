@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a0e29a8-6079-4536-a548-a5cb090a4fea" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/business/tournamentprovider.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/api.js" afterPath="$PROJECT_DIR$/routes/api.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="angular-express-seed.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="7a0e29a8-6079-4536-a548-a5cb090a4fea" time="1374792413432" ignored="false" />
+    <file path="/Dummy.txt" changelist="7a0e29a8-6079-4536-a548-a5cb090a4fea" time="1374792666289" ignored="false" />
     <file path="/app.js" changelist="7a0e29a8-6079-4536-a548-a5cb090a4fea" time="1374710867068" ignored="false" />
     <file path="/a.dummy" changelist="7a0e29a8-6079-4536-a548-a5cb090a4fea" time="1374792547217" ignored="false" />
     <file path="$PROJECT_DIR$/../NodeJS-Sample-App/EmployeeDB/employeeprovider.js" changelist="7a0e29a8-6079-4536-a548-a5cb090a4fea" time="1372908170392" ignored="false" />
@@ -87,7 +84,7 @@
       <file leaf-file-name="api.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/api.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="0" selection-start="556" selection-end="556" vertical-scroll-proportion="0.6915167">
+            <state line="23" column="0" selection-start="556" selection-end="556" vertical-scroll-proportion="0.6950904">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -374,7 +371,11 @@
       <created>1372978753749</created>
       <updated>1372978753749</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Transforming the View1 to tournaments and grabbing data from our controller. Also adding MongoDB dependencies. Please run 'npm install -d' again.">
+      <created>1374792671094</created>
+      <updated>1374792671094</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -386,8 +387,8 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921812" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2047083" sideWeight="0.60082304" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39917696" sideWeight="0.6591607" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2047083" sideWeight="0.5997249" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4002751" sideWeight="0.6591607" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39917696" sideWeight="0.3408393" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921812" sideWeight="0.49948823" order="2" side_tool="false" content_ui="tabs" />
@@ -569,7 +570,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/api.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="556" selection-end="556" vertical-scroll-proportion="0.6915167">
+        <state line="23" column="0" selection-start="556" selection-end="556" vertical-scroll-proportion="0.6950904">
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
