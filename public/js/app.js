@@ -19,7 +19,7 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'MyCtrl2'
     }).
     otherwise({
-      redirectTo: '/view2'
+      redirectTo: '/tournaments'
     });
 
   $locationProvider.html5Mode(true);
