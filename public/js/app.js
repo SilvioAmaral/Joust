@@ -23,7 +23,7 @@ config(function ($routeProvider, $locationProvider) {
       controller: 'TournamentCtrl'
     }).
     otherwise({
-      redirectTo: '/base'
+      redirectTo: '/tournaments'
     });
 
   $locationProvider.html5Mode(true);

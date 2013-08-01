@@ -10,6 +10,8 @@ exports.name = function (req, res) {
   });
 };
 
+
+//Returns list of all tournaments
 exports.tournaments = function(req, res){
 
     MongoClient.connect("mongodb://localhost:27017/joust", function(err, db) {
@@ -18,9 +20,22 @@ exports.tournaments = function(req, res){
         var collection = db.collection('tournaments');
         collection.find().toArray(function(error, items) {
             res.json({
-                title:'test',
-                tournaments:items
+                title: 'Database live data',
+                tournaments: items
             })
         })
     })
+};
+
+exports.tournaments_new = function(req, res) {
+var resultName='';
+ var payload = [];
+res.json({message: 'success:'+req.body.name});
+
+//  req.on('data', function (data) {
+//	res.json({message: 'success:'+'.'});
+//	console.log(data.name);
+  //  payload.push(data);
+ // });
+
 };
