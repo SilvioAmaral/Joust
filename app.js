@@ -7,10 +7,10 @@ var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
   http = require('http'),
-  path = require('path');
+  path = require('path'),
+  db = require('./models/db');
 
 var app = module.exports = express();
-
 
 /**
  * Configuration

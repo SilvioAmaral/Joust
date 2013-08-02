@@ -2,7 +2,7 @@
  * Serve JSON to our AngularJS client
  */
 
-var MongoClient = require('mongodb').MongoClient;
+var tournamentData = require('../models/tournament')
 
 exports.name = function (req, res) {
   res.json({
@@ -11,18 +11,11 @@ exports.name = function (req, res) {
 };
 
 
-//Returns list of all tournaments
 exports.tournaments = function(req, res){
-
-    MongoClient.connect("mongodb://localhost:27017/joust", function(err, db) {
-        if(err) {return console.dir(err);}
-
-        var collection = db.collection('tournaments');
-        collection.find().toArray(function(error, items) {
-            res.json({
-                title: 'Database live data',
-                tournaments: items
-            })
-        })
-    })
+    tournamentData.tournamentList("j",function(err,tlist){
+        res.json({
+            title: 'Database live data with mongoose',
+            tournaments: tlist
+        });
+    });
 };
