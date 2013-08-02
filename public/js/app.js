@@ -14,9 +14,13 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/tournaments',
       controller: 'TournamentCtrl'
     }).
-    when('/view2', {
-      templateUrl: 'partials/partial2',
-      controller: 'MyCtrl2'
+    when('/tournament/new', {
+      templateUrl: 'partials/tournament_new',
+      controller: 'TournamentNewCtrl'
+    }).
+    when('/base', {
+      templateUrl: 'partials/base',
+      controller: 'TournamentCtrl'
     }).
     otherwise({
       redirectTo: '/tournaments'

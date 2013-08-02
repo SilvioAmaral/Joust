@@ -2,12 +2,13 @@ extends layout
 
 block body
   div(ng-controller='AppCtrl')
-    h2 {{name}}
+    h2 Hello {{name}},
+    h1 Welcome to Joust - Smash tournaments in the face!
     ul.menu
       li
         a(href='tournaments') tournaments
       li
-        a(href='view2') view2
+        a(href='tournament/new') add a tournament
 
     div(ng-view)
 

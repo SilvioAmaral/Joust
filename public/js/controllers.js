@@ -12,7 +12,31 @@ angular.module('joust.controllers', ['joust.services']).
             $scope.tournaments = res.tournaments;
         });
   }).
-  controller('MyCtrl2', function ($scope) {
-    // write Ctrl here
+  controller('TournamentNewCtrl', function ($scope, Tournaments_New) {
 
-  });
+    // write Ctrl here
+    $scope.title = 'The title ';
+
+    $scope.saveTournament = function(newTournament) {
+      //var NewTourney = new Tournaments_New();
+      //NewTourney.newTournament = newTournament;
+      //NewTourney.testName="TestName";
+	Tournaments_New.save(newTournament);
+
+//newTournament = newTournament;
+///      Tournaments_New.save(function(res) {
+///	}, newTournament);
+    };
+
+    $scope.tournament = {'name': 'Tournament Name', 'start_date':'2013/07/01', 'end_date':'2013/07/11', 'type':'Ad Hoc', 'matches':'5', 'users': ['Bob', 'Charles', 'Amy']};
+
+	$scope.addUser = function(user,users) {
+	users.push(user);
+	$scope.data.newUser="";
+	}  ; 
+
+        $scope.removeUser = function(user,users) {
+          var index = $scope.tournament.users.indexOf(user);
+          $scope.tournament.users.splice(index,1);
+        };
+});

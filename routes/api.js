@@ -19,3 +19,9 @@ exports.tournaments = function(req, res){
         });
     });
 };
+
+exports.tournaments_new = function(req, res) {
+    var resultName='';
+    var payload = [];
+    res.json({message: 'success:'+req.body.name});
+};
