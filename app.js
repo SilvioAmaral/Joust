@@ -47,7 +47,9 @@ app.get('/partials/:name', routes.partials);
 // JSON API
 app.get('/api/name', api.name);
 app.get('/api/tournaments', api.tournaments);
-app.post('/api/tournaments',api.tournaments_new);
+app.post('/api/tournaments',api.tournament_new);
+app.put('/api/tournaments/',api.tournament_edit);
+app.get('/api/tournaments/:name', api.tournament);
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 

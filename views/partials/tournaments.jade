@@ -3,4 +3,5 @@ p {{title}}
 
 ul
     li(ng-repeat="t in tournaments")
-        {{$index + 1}} {{t.name}}
+        {{$index + 1}} 
+        a(href="tournament/{{t.name}}") {{t.name}}
