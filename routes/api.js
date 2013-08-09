@@ -12,7 +12,7 @@ exports.name = function (req, res) {
 
 
 exports.tournaments = function(req, res){
-    tournamentData.tournamentList("j",function(err,tlist){
+    tournamentData.tournamentList({},function(err,tlist){
         res.json({
             title: 'Database live data with mongoose',
             tournaments: tlist
@@ -22,7 +22,7 @@ exports.tournaments = function(req, res){
 
 
 exports.tournament = function(req, res){
-    tournamentData.tournamentFind(req.params.name,function(err,tlist){
+    tournamentData.tournamentFind(req.params.id,function(err,tlist){
         res.json({
             title: 'Database live data with mongoose',
             tournaments: tlist

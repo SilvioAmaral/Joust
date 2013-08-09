@@ -1,9 +1,10 @@
 var mongoose = require('mongoose');
 
 //Find Tournaments by name
-exports.tournamentList = function tournamentlist(tname,callback){
+exports.tournamentList = function tournamentlist(searchParameters,callback){
     var Tournament = mongoose.model( 'tournament' );
-    Tournament.find({}, function (err, tournaments) {
+    // TODO: Put validation on searchParameters
+    Tournament.find(searchParameters, function (err, tournaments) {
         if (err) {
             console.log(err);
         } else {
@@ -13,10 +14,10 @@ exports.tournamentList = function tournamentlist(tname,callback){
     });// end Tournament.find
 };// end exports.tournamentlist
 
-exports.tournamentFind = function tournamentfind(tournamentName,callback) {
+exports.tournamentFind = function tournamentfind(tournamentId,callback) {
   
     var Tournament = mongoose.model( 'tournament' );
-    Tournament.find({name:tournamentName}, function (err, tournaments) {
+    Tournament.find({id:tournamentId}, function (err, tournaments) {
         if (err) {
             console.log(err);
         } else {
@@ -55,13 +56,14 @@ exports.tournamentNew = function tournamentnew(TournamentData, callback){
 exports.TournamentEdit = function tournamentedit(modifiedTournament, callback) {
   var Tournament = mongoose.model('Tournament');
 
-  Tournament.find({ name: modifiedTournament.name }, function(err, tournaments) {
+  Tournament.find({ id: modifiedTournament.id }, function(err, tournaments) {
     if(err) {
       console.log(err);
     }
     else {
       // edit first one.
        var currentTournament = tournaments[0];
+       currentTournament.name = modifiedTournament.name;
        currentTournament.start_date = modifiedTournament.start_date;
        currentTournament.end_date = modifiedTournament.end_date;
        currentTournament.type = modifiedTournament.type;

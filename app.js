@@ -49,7 +49,7 @@ app.get('/api/name', api.name);
 app.get('/api/tournaments', api.tournaments);
 app.post('/api/tournaments',api.tournament_new);
 app.put('/api/tournaments/',api.tournament_edit);
-app.get('/api/tournaments/:name', api.tournament);
+app.get('/api/tournaments/:id', api.tournament);
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 
