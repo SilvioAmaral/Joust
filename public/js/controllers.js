@@ -5,7 +5,7 @@
 angular.module('joust.controllers', ['joust.services']).
   controller('AppCtrl', function ($scope) {
         $scope.name = "Joust - Smash Tournaments In The Face";
-    }).
+  }).
   controller('TournamentCtrl', function ($scope, Tournaments) {
         Tournaments.query(function(res){
             $scope.title = res.title;
@@ -18,18 +18,35 @@ angular.module('joust.controllers', ['joust.services']).
     $scope.title = 'The title ';
 
     $scope.saveTournament = function(newTournament) {
-	Tournaments_New.save(newTournament);
+	    Tournaments_New.save(newTournament);
     };
 
     $scope.tournament = {'name': 'Tournament Name', 'start_date':'2013/07/01', 'end_date':'2013/07/11', 'type':'Ad Hoc', 'matches':'5', 'users': ['Bob', 'Charles', 'Amy']};
 
 	$scope.addUser = function(user,users) {
-	users.push(user);
-	$scope.data.newUser="";
+	    users.push(user);
+	    $scope.data.newUser="";
 	}  ; 
 
-        $scope.removeUser = function(user,users) {
-          var index = $scope.tournament.users.indexOf(user);
-          $scope.tournament.users.splice(index,1);
-        };
-});
+    $scope.removeUser = function(user,users) {
+        var index = $scope.tournament.users.indexOf(user);
+      $scope.tournament.users.splice(index,1);
+    };
+  }).
+  controller('CompetitorsCtrl', function ($scope, Competitors) {
+    Competitors.query(function(res){
+        $scope.title = res.title;
+        $scope.competitors = res.competitors;
+    });
+  }).
+  controller('CompetitorNewCtrl', function ($scope, Competitor_New) {
+
+    $scope.title = 'The title ';
+
+
+
+    $scope.saveCompetitor = function(newCompetitor) {
+        Competitor_New.save(newCompetitor);
+    };
+
+  });

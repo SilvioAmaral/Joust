@@ -1,0 +1,22 @@
+div(ng-controller='CompetitorNewCtrl')
+    p {{title}}
+
+    p Add a competitor
+        form(ng-submit="saveCompetitor(competitor)")
+            input(type="submit", value="Add competitor")
+    p
+        ul
+            li name:
+                input(type="text", ng-model="competitor.name")
+                br
+                {{ competitor.name }}
+            li email:
+                input(type="text", ng-model="competitor.email")
+                br
+                {{ competitor.email }}
+            li type:
+                input(type="text", ng-model="competitor.type")
+                br
+                {{ competitor.type }}
+
+

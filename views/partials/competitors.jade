@@ -1,0 +1,7 @@
+div(ng-controller='CompetitorsCtrl')
+p {{title}}
+
+ul
+    li(ng-repeat="competitor in competitors")
+        {{$index + 1}} 
+        a(href="competitor/{{competitor.id}}") {{competitor.name}}

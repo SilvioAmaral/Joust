@@ -11,5 +11,10 @@ angular.module('joust.services', ['ngResource']).
     }).
     factory('Tournaments_New', function($resource){
         return $resource('/api/tournaments');
-//, {name:'test'}, {save: {method:'POST'}});
+    }).
+    factory('Competitors', function($resource){
+        return $resource('/api/competitors', {}, {query: {method:'GET'}});
+    }).
+    factory('Competitor_New', function($resource){
+        return $resource('/api/competitors');
     });

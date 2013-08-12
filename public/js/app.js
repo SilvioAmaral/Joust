@@ -26,8 +26,16 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/base',
       controller: 'TournamentCtrl'
     }).
+    when('/competitors', {
+      templateUrl: 'partials/competitors',
+      controller: 'CompetitorsCtrl'
+    }).
+    when('/competitor/new', {
+      templateUrl: 'partials/competitor_new',
+      controller: 'CompetitorNewCtrl'
+    }).
     otherwise({
-      redirectTo: '/tournaments'
+      redirectTo: '/'
     });
 
   $locationProvider.html5Mode(true);

@@ -6,6 +6,7 @@
 var express = require('express'),
   routes = require('./routes'),
   api = require('./routes/api'),
+  competitor = require('./routes/competitor'),
   http = require('http'),
   path = require('path'),
   db = require('./models/db');
@@ -45,11 +46,17 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
-app.get('/api/name', api.name);
 app.get('/api/tournaments', api.tournaments);
 app.post('/api/tournaments',api.tournament_new);
 app.put('/api/tournaments/',api.tournament_edit);
 app.get('/api/tournaments/:id', api.tournament);
+
+// Competitor web services
+app.get('/api/competitors', competitor.competitors);
+app.post('/api/competitors',competitor.competitor_new);
+app.put('/api/competitors/',competitor.competitor_edit);
+app.get('/api/competitors/:id', competitor.competitor);
+
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 
