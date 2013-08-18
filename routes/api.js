@@ -10,9 +10,8 @@ exports.name = function (req, res) {
   });
 };
 
-
 exports.tournaments = function(req, res){
-    tournamentData.tournamentList({},function(err,tlist){
+    tournamentData.tournamentList(req.params.id,function(err,tlist){
         res.json({
             title: 'Database live data with mongoose',
             tournaments: tlist
@@ -20,12 +19,12 @@ exports.tournaments = function(req, res){
     });
 };
 
-
 exports.tournament = function(req, res){
-    tournamentData.tournamentFind(req.params.id,function(err,tlist){
+    console.log('Get Tournament:' + req.params.id);
+    tournamentData.tournamentFind(req.params.id,function(err,tournament){
         res.json({
-            title: 'Database live data with mongoose',
-            tournaments: tlist
+            title: 'Tournament Find',
+            tournament: tournament
         });
     });
 };
@@ -42,12 +41,25 @@ exports.tournament_new = function(req, res) {
 };
 
 exports.tournament_edit = function(req, res) {
+  console.log('Edit Tournament:' + req.body._id);
   var modifiedTournament = req.body;
-
-  // Validation happens in model
-  tournamentData.tournamentEdit(modifiedTournament, function(err,success){
-    var resultName='';
-    var payload = [];
-    res.json({message: 'success:'+success});
-  });
+  if(typeof req.body._id != 'undefined')
+  {
+    // Validation happens in model
+    tournamentData.tournamentEdit(modifiedTournament, function(err,success){
+      var resultName='';
+      var payload = [];
+      res.json({message: 'success:'+success});
+     console.log('done editing tournament');
+    });
+  }
+  else 
+  {
+    tournamentData.tournamentNew(modifiedTournament, function(err,success){
+      var resultName='';
+      var payload = [];
+      res.json({message: 'success:'+success});
+      console.log('done saving tournament');
+    });
+  }
 };

@@ -15,14 +15,14 @@ exports.tournamentList = function tournamentlist(searchParameters,callback){
 };// end exports.tournamentlist
 
 exports.tournamentFind = function tournamentfind(tournamentId,callback) {
-  
+    console.log('tournamentid:'+tournamentId); 
     var Tournament = mongoose.model( 'tournament' );
-    Tournament.find({id:tournamentId}, function (err, tournaments) {
+    Tournament.findById(tournamentId, function (err, tournament) {
         if (err) {
             console.log(err);
         } else {
-            console.log(tournaments);
-            callback("",tournaments);
+            console.log(tournament);
+            callback("",tournament);
         }
     });// end Tournament.find
 };// end exports.tournamentFind
@@ -53,23 +53,24 @@ exports.tournamentNew = function tournamentnew(TournamentData, callback){
   saveTournament(newTournament);
 };
 
-exports.TournamentEdit = function tournamentedit(modifiedTournament, callback) {
-  var Tournament = mongoose.model('Tournament');
-
-  Tournament.find({ id: modifiedTournament.id }, function(err, tournaments) {
-    if(err) {
-      console.log(err);
-    }
-    else {
-      // edit first one.
-       var currentTournament = tournaments[0];
-       currentTournament.name = modifiedTournament.name;
-       currentTournament.start_date = modifiedTournament.start_date;
-       currentTournament.end_date = modifiedTournament.end_date;
-       currentTournament.type = modifiedTournament.type;
-       currentTournament.matches = modifiedTournament.matches;
-
-       saveTournament(currentTournament);
-    }
-  });
+exports.tournamentEdit = function tournamentedit(tournamentData, callback) {
+  var Tournament = mongoose.model('tournament');
+    Tournament.findById(tournamentData._id, function (err, tournament) {
+      if(err) {
+        console.log(err);
+      }
+      else {
+        // edit first one.
+        if(typeof tournament != 'undefined') {
+         var currentTournament = tournament;
+         currentTournament.name = tournamentData.name;
+         currentTournament.start_date = tournamentData.start_date;
+         currentTournament.end_date = tournamentData.end_date;
+         currentTournament.type = tournamentData.type;
+         currentTournament.matches = tournamentData.matches;
+         
+          saveTournament(currentTournament);
+        }
+      }
+    });
 };

@@ -1,6 +1,38 @@
-div(ng-controller="TournamentCtrl")
-p {{title}}
+div(ng-controller="TournamentViewCtrl")
+  p Title: {{tournament.title}}
+  p 
+    form(ng-submit="saveTournament(tournament)")
+      input(type="submit", value="Save Changes")
+  p View a Tournament
+    ul
+      li index: {{$index_1}} 
+      li name:
+        input(type="text", ng-model="tournament.name")
+        br
+        {{ tournament.name }} 
+      li start date:
+        input(type="text", ng-model="tournament.start_date")
+        br
+        {{ tournament.start_date }}
+      li end date:
+        input(type="text", ng-model="tournament.end_date")
+        br
+        {{ tournament.end_date }}
+      li type:
+        input(type="text", ng-model="tournament.type")
+        br
+        {{ tournament.type }}
+      li matches:
+        input(type="text", ng-model="tournament.matches")
+        br
+        {{ tournament.matches }}
+      li users:
+        form(ng-submit="addUser(data.newUser,tournament.users)")
+          input(type="text", ng-model="data.newUser")
+          input(type="submit", value="add")
+        br
+        ul
+          li(ng-repeat="user in tournament.users")
+            input(type="button", value="x", ng-click="removeUser(user,tournament.users)")
+            {{ user }}
 
-ul
-  li(ng-repeat="t in tournaments")
-    {{$index_1}} {{t.name}} {{t.start_date}} {{t.type}}
