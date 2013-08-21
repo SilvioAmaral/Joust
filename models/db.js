@@ -12,8 +12,16 @@ var tournaments = new mongoose.Schema({
 var competitors = new mongoose.Schema({
     email: { type: String, required: true, trim: true },
     name: { type: String, required: true, trim: true },
-    type: String    // should be an enum where 1-Individual 2-Team
+    type: {type: String, enum: ['Team', 'Individual']},
+    users: [users]
     // TODO: Add property for List of emails in case of team
+});
+
+var users = new mongoose.Schema({
+    email: {type: String, required: true, trim: true},
+    first: {type: String, required: true, trim: true},
+    last: {type: String, required: true, trim: true},
+    getNews: {type: Boolean, required: true, trim: true}
 });
 
 mongoose.model( 'tournament', tournaments );
