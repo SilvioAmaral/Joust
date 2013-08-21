@@ -12,6 +12,16 @@ angular.module('joust.controllers', ['joust.services']).
             $scope.tournaments = res.tournaments;
         });
   }).
+  controller('TournamentViewCtrl', function ($scope, $routeParams, Tournament) {
+        Tournament.query($routeParams,function(res){
+            $scope.title = res.title;
+            $scope.tournament = res.tournament;
+        });
+
+      $scope.saveTournament = function(editedTournament) {
+        Tournament.save(editedTournament);
+      };
+  }).
   controller('TournamentNewCtrl', function ($scope, Tournaments_New) {
 
     // write Ctrl here

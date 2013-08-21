@@ -47,8 +47,8 @@ app.get('/partials/:name', routes.partials);
 
 // JSON API
 app.get('/api/tournaments', api.tournaments);
-app.post('/api/tournaments',api.tournament_new);
-app.put('/api/tournaments/',api.tournament_edit);
+app.post('/api/tournaments',api.tournament_edit);
+app.put('/api/tournaments',api.tournament_edit);
 app.get('/api/tournaments/:id', api.tournament);
 
 // Competitor web services

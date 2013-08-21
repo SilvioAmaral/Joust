@@ -9,6 +9,12 @@ angular.module('joust.services', ['ngResource']).
     factory('Tournaments', function($resource){
         return $resource('/api/tournaments', {}, {query: {method:'GET'}});
     }).
+    factory('Tournament', function($resource){
+        return $resource('/api/tournaments/:id', {}, {query: {method:'GET',params:{id:'id'}}});
+    }).
+    factory('Tournaments_View', function($resource) {
+        return $resource('api/tournament', {}, { query: { method:'GET'}});
+    }).
     factory('Tournaments_New', function($resource){
         return $resource('/api/tournaments');
     }).

@@ -1,7 +1,7 @@
 div(ng-controller='TournamentCtrl')
 p {{title}}
-
+p View Tournaments
 ul
     li(ng-repeat="t in tournaments")
         {{$index + 1}} 
-        a(href="tournament/{{t.name}}") {{t.name}}
+        a(href='tournaments/{{ t._id}}') {{t.name}}

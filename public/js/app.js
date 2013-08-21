@@ -18,7 +18,7 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/tournament_new',
       controller: 'TournamentNewCtrl'
     }).
-    when('tournament/:id', {
+    when('/tournaments/:id', {
       templateUrl: 'partials/tournament',
       controller: 'TournamentCtrl'
     }).

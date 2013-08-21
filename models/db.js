@@ -1,11 +1,11 @@
 var mongoose = require( 'mongoose' );
 
 var tournaments = new mongoose.Schema({
-    name: String,
-    start_date: String,
-    end_date: String,
-    type: String,
-    matches: String
+    name: { type: String, required: true, trim: true },
+    start_date: { type: String, required: false },
+    end_date: { type: String, required: false },
+    type: { type: String, required: true, trim: true },
+    matches: { type: String, required: false }
     // TODO: change types to appropriate types, and add users
 });
 
