@@ -13,15 +13,14 @@ exports.competitorList = function competitorlist(searchParameters,callback){
     });
 };
 
-exports.competitorFind = function competitorfind(competitorId,callback) {
+exports.competitorFind = function competitorFind(competitorId,callback) {
 
     var Competitor = mongoose.model( 'competitor' );
-    // TODO: Put validation on searchParameters
-    Competitor.find({id: competitorId}, function (err, competitors) {
+    Competitor.findById({id: competitorId}, function (err, competitor) {
         if (err) {
             console.log(err);
         } else {
-            callback("", competitors);
+            callback("", competitor);
         }
     });
 };// end exports.tournamentFind
@@ -50,10 +49,10 @@ exports.competitorNew = function competitornew(CompetitorData, callback){
     saveCompetitor(newCompetitor);
 };
 
-exports.competitorEdit = function competitoredit(competitorToModify, callback) {
+exports.competitorEdit = function competitorEdit(competitorToModify, callback) {
     var Competitor = mongoose.model('competitor');
 
-    Competitor.find({ id: competitorToModify.id }, function(err, competitors) {
+    Competitor.find({ id: competitorToModify._id }, function(err, competitor) {
 
         //TODO: Validate if found
 
@@ -62,12 +61,11 @@ exports.competitorEdit = function competitoredit(competitorToModify, callback) {
         }
         else {
             // edit first one.
-            var currentCompetitor = competitors[0];
-            currentCompetitor.email = competitorToModify.name;
-            currentCompetitor.name = competitorToModify.start_date;
-            currentCompetitor.type = competitorToModify.end_date;
+            competitor.email = competitorToModify.email;
+            competitor.name = competitorToModify.name;
+            competitor.type = competitorToModify.type;
 
-            saveCompetitor(currentCompetitor);
+            saveCompetitor(competitor);
         }
     });
 };

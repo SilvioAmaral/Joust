@@ -4,4 +4,4 @@ p {{title}}
 ul
     li(ng-repeat="competitor in competitors")
         {{$index + 1}} 
-        a(href="competitor/{{competitor.id}}") {{competitor.name}}
+        a(href="competitors/{{competitor._id}}") {{competitor.name}}

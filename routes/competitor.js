@@ -43,3 +43,27 @@ exports.competitor_edit = function(req, res) {
         res.json({message: 'success:' + success});
     });
 };
+
+exports.competitor_edit = function(req, res) {
+    var modifiedCompetitor = req.body;
+    if(typeof req.body._id != 'undefined')
+    {
+        // Validation happens in model
+        competitorData.competitorEdit(modifiedCompetitor, function(err,success){
+            var resultName='';
+            var payload = [];
+            res.json({message: 'success:'+success});
+            console.log('done editing competitor');
+        });
+    }
+    else
+    {
+        competitorData.competitorNew(modifiedCompetitor, function(err,success){
+            var resultName='';
+            var payload = [];
+            res.json({message: 'success:'+success});
+            console.log('done saving competitor');
+        });
+    }
+};
+

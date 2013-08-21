@@ -53,7 +53,7 @@ app.get('/api/tournaments/:id', api.tournament);
 
 // Competitor web services
 app.get('/api/competitors', competitor.competitors);
-app.post('/api/competitors',competitor.competitor_new);
+app.post('/api/competitors',competitor.competitor_edit);
 app.put('/api/competitors/',competitor.competitor_edit);
 app.get('/api/competitors/:id', competitor.competitor);
 

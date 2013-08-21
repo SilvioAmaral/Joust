@@ -23,4 +23,10 @@ angular.module('joust.services', ['ngResource']).
     }).
     factory('Competitor_New', function($resource){
         return $resource('/api/competitors');
+    }).
+    factory('Competitor', function($resource){
+        return $resource('/api/Competitors/:id', {}, {query: {method:'GET',params:{id:'id'}}});
+    }).
+    factory('Competitors_View', function($resource) {
+        return $resource('api/Competitor', {}, { query: { method:'GET'}});
     });
