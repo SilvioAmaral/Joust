@@ -4,6 +4,8 @@
 
 angular.module('joust', [
   'joust.controllers',
+  'joust.controllers.tournament',
+  'joust.controllers.competitor',
   'joust.filters',
   'joust.services',
   'joust.directives'
