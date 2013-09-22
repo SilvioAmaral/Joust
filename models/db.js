@@ -18,7 +18,7 @@ var user = new mongoose.Schema({
 
 var competitor = new mongoose.Schema({
     email: { type: String, required: true, trim: true },
-    name: { type: String, required: true, trim: true },
+    name: { type: String, required: true, trim: true }, //How user will be visible on screen or team name
     type: {type: String, enum: ['Team', 'Individual']},
     users: [user],
     Description: {type: String}
@@ -33,8 +33,8 @@ var result = new mongoose.Schema({
 
 var match = new mongoose.Schema({
     date: {type: String, required: true},
-    location: [location],
-    competitors: [competitor],
+    location: [{type: ObjectId, ref: 'location'}],
+    competitors: [{type: ObjectId, ref: 'competitor'}],
     result: {type: ObjectId, ref: 'result'},
     description: {type: String},
     status: {type: String, enum: ['Pending', 'In Game', 'Done', 'Cancelled']}
@@ -46,7 +46,7 @@ var tournament = new mongoose.Schema({
     start_date: { type: String, required: false },
     end_date: { type: String, required: false },
     type: { type: String, required: true, trim: true },
-    matches: [match],
+    matches: [{type: ObjectId, ref: 'match'}],
     Description: {type: String}
 });
 
