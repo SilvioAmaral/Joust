@@ -5,7 +5,7 @@
 
 var express = require('express'),
   routes = require('./routes'),
-  api = require('./routes/api'),
+  tournament = require('./routes/tournament'),
   competitor = require('./routes/competitor'),
   http = require('http'),
   path = require('path'),
@@ -46,10 +46,10 @@ app.get('/', routes.index);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
-app.get('/api/tournaments', api.tournaments);
-app.post('/api/tournaments',api.tournament_edit);
-app.put('/api/tournaments',api.tournament_edit);
-app.get('/api/tournaments/:id', api.tournament);
+app.get('/api/tournaments', tournament.tournaments);
+app.post('/api/tournaments', tournament.tournament_edit);
+app.put('/api/tournaments', tournament.tournament_edit);
+app.get('/api/tournaments/:id', tournament.tournament);
 
 // Competitor web services
 app.get('/api/competitors', competitor.competitors);
