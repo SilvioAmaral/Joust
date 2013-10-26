@@ -46,7 +46,7 @@ var tournament = new mongoose.Schema({
     start_date: { type: String, required: false },
     end_date: { type: String, required: false },
     type: { type: String, required: true, trim: true },
-    matches: [{type: ObjectId, ref: 'match'}],
+    //matches: [{type: ObjectId, ref: 'match'}],
     Description: {type: String}
 });
 
