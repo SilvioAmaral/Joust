@@ -18,11 +18,11 @@ config(function ($routeProvider, $locationProvider) {
     }).
     when('/tournament/new', {
       templateUrl: 'partials/tournament_new',
-      controller: 'TournamentNewCtrl'
+      controller: 'TournamentViewCtrl'
     }).
     when('/tournaments/:id', {
       templateUrl: 'partials/tournament',
-      controller: 'TournamentCtrl'
+      controller: 'TournamentViewCtrl'
     }).
     when('/base', {
       templateUrl: 'partials/base',

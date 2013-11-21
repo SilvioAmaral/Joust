@@ -36,13 +36,14 @@ describe("Unit Testing: joust.controllers.tournament", function() {
         scope = $rootScope.$new();
         tournaments = {};
         routeParams = {};
+        routeParams.id = 1;
         tournaments.query = function(routeParams, callback){
                   callback({ title:"TestTile", tournament:"Tournaments"});
         };
       
         tournaments.save = function(){true};
         
-        ctrl = $controller('TournamentViewCtrl', {$scope:scope, Tournament:tournaments});
+        ctrl = $controller('TournamentViewCtrl', {$scope:scope, $routeParams:routeParams, Tournament:tournaments});
       });
     });
 
