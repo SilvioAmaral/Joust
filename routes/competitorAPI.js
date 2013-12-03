@@ -2,7 +2,7 @@
  * Serve JSON to our AngularJS client
  */
 
-var competitorData = require('../models/competitor')
+var competitorData = require('../models/competitorDAL');
 
 exports.competitors = function(req, res){
     competitorData.competitorList({},function(err,compList){
@@ -28,8 +28,6 @@ exports.competitor_new = function(req, res) {
 
     // Validation happens in model
     competitorData.competitorNew(newCompetitor, function(err,success){
-        var resultName='';
-        var payload = [];
         res.json({message: 'success:' + success});
     });
 };
@@ -38,8 +36,6 @@ exports.competitor_edit = function(req, res) {
     var modifiedCompetitor = req.body;
 
     competitorData.competitorEdit(modifiedCompetitor, function(err,success){
-        var resultName='';
-        var payload = [];
         res.json({message: 'success:' + success});
     });
 };
@@ -50,8 +46,6 @@ exports.competitor_edit = function(req, res) {
     {
         // Validation happens in model
         competitorData.competitorEdit(modifiedCompetitor, function(err,success){
-            var resultName='';
-            var payload = [];
             res.json({message: 'success:'+success});
             console.log('done editing competitor');
         });
@@ -59,8 +53,6 @@ exports.competitor_edit = function(req, res) {
     else
     {
         competitorData.competitorNew(modifiedCompetitor, function(err,success){
-            var resultName='';
-            var payload = [];
             res.json({message: 'success:'+success});
             console.log('done saving competitor');
         });
