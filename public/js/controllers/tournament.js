@@ -10,25 +10,35 @@ tournamentController
         });
     }).
     controller('TournamentViewCtrl', function ($scope, $routeParams, Tournament) {
-        Tournament.query($routeParams,function(res){
-            $scope.title = res.title;
-            $scope.tournament = res.tournament;
-        });
+	if($routeParams.id !=null)
+	{
+          // search for the product, and return the found tournament
+        	Tournament.query($routeParams,function(res){
+            		$scope.title = res.title;
+            		$scope.tournament = res.tournament;
+        	});
+	} else {
+           // start a new product
+                $scope.title = "Untitled";
+        	$scope.tournament = {'name': 'Tournament Name', 'start_date':'2013/07/01', 'end_date':'2013/07/11', 'type':'Ad Hoc', 'matches':'5', 'users': ['Bob', 'Charles', 'Amy']};
+	}
 
+        // Save changes on the tournament. if no Id, saves a new tournament
         $scope.saveTournament = function(editedTournament) {
             Tournament.save(editedTournament);
         };
-    }).
-    controller('TournamentNewCtrl', function ($scope, Tournaments_New) {
 
-        // write Ctrl here
-        $scope.title = 'The title ';
+       // Adds a Competitor to the tournament
+        $scope.addCompetitor = function(competitor,competitors) {
+            competitors.push(competitor);
+            $scope.data.newCompetitor="";
+        }  ;
 
-        $scope.saveTournament = function(newTournament) {
-            Tournaments_New.save(newTournament);
+        // remove Competitor from the tournament
+        $scope.removeCompetitor = function(competitor,competitors) {
+            var index = $scope.tournament.competitors.indexOf(competitor);
+            $scope.tournament.competitors.splice(index,1);
         };
-
-        $scope.tournament = {'name': 'Tournament Name', 'start_date':'2013/07/01', 'end_date':'2013/07/11', 'type':'Ad Hoc', 'matches':'5', 'users': ['Bob', 'Charles', 'Amy']};
 
         $scope.addUser = function(user,users) {
             users.push(user);

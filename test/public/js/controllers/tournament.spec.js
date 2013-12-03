@@ -1,9 +1,9 @@
 // unit testing for controller.js - spec?
 // following www.yearofmoo.com
 
-describe("Unit Testing: joust.controllers", function() {
+describe("Unit Testing: joust.controllers.tournament", function() {
 
-  beforeEach(angular.mock.module('joust.controllers'));
+  beforeEach(angular.mock.module('joust.controllers.tournament'));
 
   describe('TournamentCtrl', function() {
     var scope;
@@ -36,13 +36,14 @@ describe("Unit Testing: joust.controllers", function() {
         scope = $rootScope.$new();
         tournaments = {};
         routeParams = {};
+        routeParams.id = 1;
         tournaments.query = function(routeParams, callback){
                   callback({ title:"TestTile", tournament:"Tournaments"});
         };
       
         tournaments.save = function(){true};
         
-        ctrl = $controller('TournamentViewCtrl', {$scope:scope, Tournament:tournaments});
+        ctrl = $controller('TournamentViewCtrl', {$scope:scope, $routeParams:routeParams, Tournament:tournaments});
       });
     });
 
