@@ -2,7 +2,7 @@
  * Serve JSON to our AngularJS client
  */
 
-var competitorData = require('../models/competitorDAL');
+var competitorData = require('../models/competitor');
 
 exports.competitors = function(req, res){
     competitorData.competitorList({},function(err,compList){

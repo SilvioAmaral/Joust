@@ -3,22 +3,22 @@ var mongoose = require( 'mongoose' ),
     ObjectId = Schema.ObjectId;
 
 var location = new mongoose.Schema({
-    name:{ type: String, required: true, trim: true },
+    name:{ type: String,  trim: true },
     address: { type: String, required: false, trim: true },
     description: {type: String}
 });
 
 var user = new mongoose.Schema({
-    email: {type: String, required: true, trim: true},
-    first: {type: String, required: true, trim: true},
-    last: {type: String, required: true, trim: true},
-    getNews: {type: Boolean, required: true, trim: true},
+    email: {type: String,  trim: true},
+    first: {type: String,  trim: true},
+    last: {type: String,  trim: true},
+    getNews: {type: Boolean,  trim: true},
     description: {type: String}
 });
 
 var competitor = new mongoose.Schema({
-    email: { type: String, required: true, trim: true },
-    name: { type: String, required: true, trim: true }, //How user will be visible on screen or team name
+    email: { type: String,  trim: true },
+    name: { type: String,  trim: true }, //How user will be visible on screen or team name
     type: {type: String, enum: ['Team', 'Individual']},
     users: [user],
     Description: {type: String}
@@ -42,12 +42,12 @@ var match = new mongoose.Schema({
 
 
 var tournament = new mongoose.Schema({
-    name: { type: String, required: true, trim: true },
+    name: { type: String,  trim: true },
     start_date: { type: String, required: false },
     end_date: { type: String, required: false },
-    type: { type: String, required: true, trim: true },
-    matches: [{type: ObjectId, ref: 'match'}],
-    competitors: [{type: ObjectId, ref: 'competitor'}],
+    type: { type: String,  trim: true },
+    //matches: [{type: ObjectId, ref: 'match'}],
+    //competitors: [{type: ObjectId, ref: 'competitor'}],
     Description: {type: String}
 });
 
