@@ -34,8 +34,6 @@ exports.tournament_new = function(req, res) {
 
   // Validation happens in model
   tournamentData.tournamentNew(newTournament, function(err,success){
-    var resultName='';
-    var payload = [];
     res.json({message: 'success:'+success});
   });
 };

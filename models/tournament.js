@@ -42,6 +42,7 @@ var saveTournament = function(newTournament) {
 
 exports.tournamentNew = function tournamentnew(TournamentData, callback){
   var Tournament = mongoose.model('tournament');
+
   var newTournament = new Tournament({
     name: TournamentData.name,
     start_date: TournamentData.start_date,

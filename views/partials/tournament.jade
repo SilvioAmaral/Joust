@@ -23,9 +23,13 @@ div(ng-controller="TournamentViewCtrl")
         br
         {{ tournament.type }}
       li matches:
-        input(type="text", ng-model="tournament.matches")
-        br
-        {{ tournament.matches }}
+        table
+          tr(ng-repeat="match in tournament.matches")
+            td
+              button(ng-click="removeMatch($index)") X
+            td{{match.location}}
+            td{{match.date}}
+            td{{match.description}}
       li users:
         form(ng-submit="addUser(data.newUser,tournament.users)")
           input(type="text", ng-model="data.newUser")

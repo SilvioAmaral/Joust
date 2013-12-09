@@ -25,35 +25,33 @@ var competitor = new mongoose.Schema({
 });
 
 var result = new mongoose.Schema({
-    type: {type: String, enum:['Win', 'Loss', 'Tie', 'Other'], required: true},
+    type: {type: String, enum:['Win', 'Loss', 'Tie', 'Other']},
     points: {type: String, Required: false},
     description: {type: String}
 });
-
-
-var match = new mongoose.Schema({
-    date: {type: String, required: true},
-    location: [{type: ObjectId, ref: 'location'}],
-    competitors: [{type: ObjectId, ref: 'competitor'}],
-    result: {type: ObjectId, ref: 'result'},
-    description: {type: String},
-    status: {type: String, enum: ['Pending', 'In Game', 'Done', 'Cancelled']}
-});
-
 
 var tournament = new mongoose.Schema({
     name: { type: String,  trim: true },
     start_date: { type: String, required: false },
     end_date: { type: String, required: false },
     type: { type: String,  trim: true },
-    //matches: [{type: ObjectId, ref: 'match'}],
+    matches: [{
+        date: {type: String},
+        //location: [{type: ObjectId, ref: 'location'}],
+        location: [{type: String}],
+        //competitors: [{type: ObjectId, ref: 'competitor'}],
+        competitors: [{type: String}],
+        //result: {type: ObjectId, ref: 'result'},
+        result: {type: String},
+        description: {type: String},
+        status: {type: String, enum: ['Pending', 'In Game', 'Done', 'Cancelled']}
+    }],
     //competitors: [{type: ObjectId, ref: 'competitor'}],
-    Description: {type: String}
+    description: {type: String}
 });
 
 
 mongoose.model( 'tournament', tournament );
-mongoose.model( 'match', match );
 mongoose.model( 'competitor', competitor );
 mongoose.model( 'user', user );
 mongoose.model( 'result', result );
