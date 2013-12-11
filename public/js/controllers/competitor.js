@@ -28,7 +28,8 @@ competitorController.
         } else {
            $scope.title = "Untitled";
         }
-
+        
+        // Save changes on the competitor. If no Id, saves as new competitor
         $scope.saveCompetitor = function(editedCompetitor) {
             Competitor.save(editedCompetitor);
         };

@@ -3,43 +3,50 @@ div(ng-controller='TournamentViewCtrl')
     form(ng-submit="saveTournament(tournament)")
       input(type="submit", value="Add Tournament")
   p 
-    ul
-      li name:
+    div.row
+      div.large-5.columns
+        label name
         input(type="text", ng-model="tournament.name")
-        br
-        {{ tournament.name }} 
-      li start date:
+      div.large-2.columns
+        label start date:
         input(type="text", ng-model="tournament.start_date")
-        br
-        {{ tournament.start_date }}
-      li end date:
-        input(type="text", ng-model="tournament.end_date")
-        br
-        {{ tournament.end_date }}
-      li type:
+      div.large-2.columns
+       label end date:
+       input(type="text", ng-model="tournament.end_date")
+      div.large-3.columns
+        label type:
         input(type="text", ng-model="tournament.type")
-        br
-        {{ tournament.type }}
-
-      li users:
+    div.row
+      div.large-7.columns
+        label matches:
+        table.small-12.columns
+          tr(ng-repeat="match in tournament.matches")
+            td
+              button(ng-click="removeMatch($index)") X
+            td{{match.location}}
+            td{{match.date}}
+            td{{match.description}}
+    div.row
+      div.large-7.columns
+        label users:
         form(ng-submit="addUser(data.newUser,tournament.users)")
           input(type="text", ng-model="data.newUser")
           input(type="submit", value="add")
         br
-        ul
-          li(ng-repeat="user in tournament.users")
-            input(type="button", value="x", ng-click="removeUser(user,tournament.users)")
-            {{ user }}
-  table
-    tr(ng-repeat="match in tournament.matches")
-      td
-        button(ng-click="removeMatch($index)") X
-      td{{match.location}}
-      td{{match.date}}
-      td{{match.description}}
-
-  input(type="text", ng-model="location")
-  input(type="text", ng-model="date")
-  input(type="text", ng-model="description")
+        table.small-12.columns
+          tr(ng-repeat="user in tournament.users")
+            td
+              button(ng-click="removeUser(user,tournament.users)") X
+            td {{ user }}
+    div.row
+      div.large-4.columns
+        label location
+        input(type="text", ng-model="location")
+      div.large-4.columns
+        label date
+        input(type="text", ng-model="date")
+      div.large-4.columns
+        label description
+        input(type="text", ng-model="description")
   button(ng-click="addMatch()") "Add Match"
 

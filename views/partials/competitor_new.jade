@@ -1,22 +1,18 @@
-div(ng-controller='CompetitorNewCtrl')
+div(ng-controller='CompetitorViewCtrl')
     p {{title}}
 
     p Add a competitor
         form(ng-submit="saveCompetitor(competitor)")
             input(type="submit", value="Add competitor")
     p
-        ul
-            li name:
-                input(type="text", ng-model="competitor.name")
-                br
-                {{ competitor.name }}
-            li email:
-                input(type="text", ng-model="competitor.email")
-                br
-                {{ competitor.email }}
-            li type:
-                input(type="text", ng-model="competitor.type")
-                br
-                {{ competitor.type }}
-
-
+      div.row
+        div.large-4.columns
+          label name:
+          input(type="text", ng-model="competitor.name")
+          
+        div.large-4.columns
+          label email:
+          input(type="text", ng-model="competitor.email")
+        div.large-4.columns
+          label type:
+          input(type="text", ng-model="competitor.type")

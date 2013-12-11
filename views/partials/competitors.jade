@@ -1,7 +1,12 @@
 div(ng-controller='CompetitorsCtrl')
 p {{title}}
 
-ul
-    li(ng-repeat="competitor in competitors")
+table.twelve
+  tr
+    th Index
+    th name
+    tr(ng-repeat="competitor in competitors")
+      td 
         {{$index + 1}} 
-        a(href="competitors/{{competitor._id}}") {{competitor.name}}
+      td 
+        a(href='competitors/{{ competitor._id}}') {{competitor.name}}

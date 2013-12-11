@@ -34,11 +34,11 @@ config(function ($routeProvider, $locationProvider) {
     }).
     when('/competitor/new', {
       templateUrl: 'partials/competitor_new',
-      controller: 'CompetitorNewCtrl'
+      controller: 'CompetitorViewCtrl'
     }).
       when('/competitors/:id', {
           templateUrl: 'partials/competitor',
-          controller: 'CompetitorsCtrl'
+          controller: 'CompetitorViewCtrl'
       }).
       otherwise({
       redirectTo: '/'

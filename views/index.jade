@@ -2,18 +2,24 @@ extends layout
 
 block body
   div(ng-controller='AppCtrl')
+    nav(class='top-bar',data-topbar)
+      ul.title-area
+        li.name
+          h1 
+           a(href='#') Joust
+      section(class='top-bar-section')
+        ul.left
+          li
+            a(href='tournaments') Tournaments
+          li
+            a(href='tournament/new') Add a tournament
+          li
+            a(href='competitors') Competitors
+          li
+            a(href='competitor/new') Add a competitor
     h2 Hello {{name}},
     h1 Welcome to Joust - Smash tournaments in the face!
-    ul.menu
-      li
-        a(href='tournaments') Tournaments
-      li
-        a(href='tournament/new') Add a tournament
-      li
-        a(href='competitors') Competitors
-      li
-        a(href='competitor/new') Add a competitor
-    div(ng-view)
+    div.panel(ng-view)
 
   script(src='js/lib/angular/angular.js')
   script(src='js/lib/angular/angular-resource.js')

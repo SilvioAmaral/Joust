@@ -61,11 +61,14 @@ exports.competitorEdit = function competitorEdit(competitorToModify, callback) {
         }
         else {
             // edit first one.
-            competitor.email = competitorToModify.email;
-            competitor.name = competitorToModify.name;
-            competitor.type = competitorToModify.type;
+            if(typeof tournament != 'undefined') {
+              var currentCompetitor = competitor;
+              competitor.email = competitorToModify.email;
+              competitor.name = competitorToModify.name;
+              competitor.type = competitorToModify.type;
 
-            saveCompetitor(competitor);
+              saveCompetitor(competitor);
+            }
         }
     });
 };
