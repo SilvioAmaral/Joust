@@ -26,6 +26,18 @@ div(ng-controller='TournamentViewCtrl')
             td{{match.location}}
             td{{match.date}}
             td{{match.description}}
+      div.large-5.columns
+        div.small-12.columns
+            label location
+            input(type="text", ng-model="location")
+        div.small-12.columns
+            label date
+            input(type="text", ng-model="date")
+        div.small-12.columns
+            label description
+            input(type="text", ng-model="description")
+        div.small-12.columns
+            button(ng-click="addMatch()") "Add Match"
     div.row
       div.large-7.columns
         label users:
@@ -39,14 +51,4 @@ div(ng-controller='TournamentViewCtrl')
               button(ng-click="removeUser(user,tournament.users)") X
             td {{ user }}
     div.row
-      div.large-4.columns
-        label location
-        input(type="text", ng-model="location")
-      div.large-4.columns
-        label date
-        input(type="text", ng-model="date")
-      div.large-4.columns
-        label description
-        input(type="text", ng-model="description")
-  button(ng-click="addMatch()") "Add Match"
 
