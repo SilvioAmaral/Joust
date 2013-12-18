@@ -5,8 +5,11 @@
   "dependencies": {
     "express": "~3.2.6",
     "jade": "~0.31.2",
-    "karma": "~0.8.6",
-    "mongoose": "*",
-    "travis": "*"
+    "karma": "~0.8.8",
+    "mongoose": "~3.8.2",
+    "travis-ci": "~1.1.1"
+  },
+  "engines": {
+    "node": "0.10.x"
   }
 }
