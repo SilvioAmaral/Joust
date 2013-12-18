@@ -6,17 +6,3 @@ node_js:
   - "0.6"
 services:
   - mongodb
-deploy:
-  provider: heroku
-  api_key: 6c2bbe45-2425-4283-8221-336a4dfc4cad
-  app: Joust
-after_success:
-    - wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-    - git remote add heroku git@heroku.com:Joust.git
-    - echo "Host heroku.com" >> ~/.ssh/config
-    - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
-    - echo "   CheckHostIP no" >> ~/.ssh/config
-    - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
-    - heroku keys:clear
-    - yes | heroku keys:add
-    - yes | git push heroku master
