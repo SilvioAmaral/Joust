@@ -17,12 +17,20 @@ exports.tournamentList = function tournamentlist(searchParameters,callback){
 exports.tournamentFind = function tournamentfind(tournamentId,callback) {
     console.log('tournamentid:'+tournamentId); 
     var Tournament = mongoose.model( 'tournament' );
+    var Competitor = mongoose.model('competitor');
     Tournament.findById(tournamentId, function (err, tournament) {
         if (err) {
             console.log(err);
         } else {
             console.log(tournament);
-            callback("",tournament);
+            Competitor.populate(tournament, [{path:'competitors'}]
+              , function(err, user) {
+                if(err) {
+                  console.log(err);
+                } else {
+                callback("",tournament);
+                }
+            });
         }
     });// end Tournament.find
 };// end exports.tournamentFind
@@ -32,9 +40,11 @@ exports.tournamentFind = function tournamentfind(tournamentId,callback) {
 var saveTournament = function(newTournament) {
   newTournament.save(function(err,newTournament) {
     if(err) {
-       console.log(err);
+       console.log('error:'+err);
     }
     else  {
+
+      console.log('finished saving tournament');
       return newTournament.name + " saved successfully";
     }
   });
@@ -43,15 +53,29 @@ var saveTournament = function(newTournament) {
 exports.tournamentNew = function tournamentnew(TournamentData, callback){
   var Tournament = mongoose.model('tournament');
 
-  var newTournament = new Tournament({
-    name: TournamentData.name,
-    start_date: TournamentData.start_date,
-    end_date: TournamentData.end_date,
-    type: TournamentData.type,
-    matches: TournamentData.matches
-  });
- 
-  saveTournament(newTournament);
+ // find and create competitors first.
+  var Competitor = mongoose.model('competitor');
+   console.log('competitors:'+TournamentData.competitors);
+   console.log(JSON.stringify(TournamentData.competitors));
+  var foundCompetitorsPromise = Competitor.create(TournamentData.competitors, 
+    function(err) { 
+    // after creating competitors, create tournament
+      if(err) { 
+        console.log('error:'+err); 
+      } else {
+           tournament_competitors = Array.prototype.slice.call(arguments,1);
+        var newTournament = new Tournament({
+          name: TournamentData.name,
+          start_date: TournamentData.start_date,
+          end_date: TournamentData.end_date,
+          type: TournamentData.type,
+          matches: TournamentData.matches,
+          competitors: tournament_competitors 
+        });
+        console.log('competitors:'+ TournamentData.competitors);
+        saveTournament(newTournament);
+      }
+    });
 };
 
 exports.tournamentEdit = function tournamentedit(tournamentData, callback) {
@@ -69,8 +93,9 @@ exports.tournamentEdit = function tournamentedit(tournamentData, callback) {
          currentTournament.end_date = tournamentData.end_date;
          currentTournament.type = tournamentData.type;
          currentTournament.matches = tournamentData.matches;
+         currentTournament.competitors = tournamentData.competitors;
          
-          saveTournament(currentTournament);
+         saveTournament(currentTournament);
         }
       }
     });

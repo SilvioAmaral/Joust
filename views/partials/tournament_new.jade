@@ -37,18 +37,32 @@ div(ng-controller='TournamentViewCtrl')
             label description
             input(type="text", ng-model="description")
         div.small-12.columns
-            button(ng-click="addMatch()") "Add Match"
+            button(ng-click="addMatch()") Add Match
     div.row
       div.large-7.columns
-        label users:
-        form(ng-submit="addUser(data.newUser,tournament.users)")
-          input(type="text", ng-model="data.newUser")
-          input(type="submit", value="add")
-        br
+        label competitors:
         table.small-12.columns
-          tr(ng-repeat="user in tournament.users")
+          tr(ng-repeat="competitor in tournament.competitors")
             td
-              button(ng-click="removeUser(user,tournament.users)") X
-            td {{ user }}
+              button(ng-click="removeCompetitor(competitor,tournament.competitors)") X
+            td {{ competitor.name }}
+            td {{ competitor.email }}
+      div.large-5.columns
+        div.small-12.columns
+            label name
+            input(type="text", ng-model="new_competitor.name")
+        div.small-12.columns
+            label email
+            input(type="text", ng-model="new_competitor.email")
+        div.small-12.columns
+            label type
+            input(type="text", ng-model="new_competitor.type")
+        div.small-12.columns
+            button(ng-click="addCompetitor()") Add Competitor
+
+
+
+
+
     div.row
 

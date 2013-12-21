@@ -46,7 +46,7 @@ var tournament = new mongoose.Schema({
         description: {type: String},
         status: {type: String, enum: ['Pending', 'In Game', 'Done', 'Cancelled']}
     }],
-    //competitors: [{type: ObjectId, ref: 'competitor'}],
+    competitors: [{type: ObjectId, ref: 'competitor'}],
     description: {type: String}
 });
 

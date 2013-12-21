@@ -10,7 +10,6 @@ tournamentController
         });
     }).
     controller('TournamentViewCtrl', function ($scope, $routeParams, Tournament) {
-
         if($routeParams.id !=null)
         {
             // search for the product, and return the found tournament
@@ -28,8 +27,12 @@ tournamentController
                    'type':'Ad Hoc',
                    'matches':[{'location': 'room a', 'date':'2001/12/10'}, {'location': 'room b', 'date':'2001/12/10'},
                        {'location': 'room c', 'date':'2001/12/10'}],
-                   'users': ['Bob', 'Charles', 'Amy']};
+                   'users': ['Bob', 'Charles', 'Amy'],
+                   'competitors': [{'name':'Racer X','email':'racerx@gmail.com'}, {'name':'Speed Racer','email':'racerXfan@gmail.com'}]};
         }
+
+        // add a base 'new competitor'
+        $scope.new_competitor={};
 
         // Save changes on the tournament. if no Id, saves a new tournament
         $scope.saveTournament = function(editedTournament) {
@@ -37,9 +40,20 @@ tournamentController
         };
 
        // Adds a Competitor to the tournament
-        $scope.addCompetitor = function(competitor,competitors) {
-            competitors.push(competitor);
-            $scope.data.newCompetitor="";
+        $scope.addCompetitor = function() {
+            var competitor = {
+               'name':$scope.new_competitor.name,
+               'email':$scope.new_competitor.email,
+               'type':$scope.new_competitor.type
+            };
+            if(competitor.name!=undefined && competitor.name!=""
+                && competitor.email!=undefined && competitor.email!="")
+            {
+              $scope.tournament.competitors.push(competitor);
+              $scope.new_competitor.name="";
+              $scope.new_competitor.email="";
+              $scope.new_competitor.type="";
+            }
         }  ;
 
         // remove Competitor from the tournament
